@@ -1,0 +1,228 @@
+:root {
+  --primary-color: #5b7065;
+  --gold-accent: #c29b38;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Egyedi Színbeállítások */
+.text-success {
+  color: var(--primary-color) !important;
+}
+
+.text-gold {
+  color: var(--gold-accent);
+}
+
+.btn-custom {
+  background-color: var(--primary-color);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #4a5c53;
+  transform: translateY(-2px);
+}
+
+/* Floating Sticky English Language Switcher Button */
+.floating-lang-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1050; /* Stays above navbar and overlay elements */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  color: #2b3a33;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  border: 2px solid var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-lang-btn .flag-icon {
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.floating-lang-btn:hover {
+  background-color: var(--primary-color);
+  color: #ffffff !important;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Mobil Navigáció Javítás */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    margin-top: 0.5rem;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav-item:last-child .nav-link {
+    border-bottom: none;
+  }
+  
+  .floating-lang-btn {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 16px;
+    font-size: 1rem;
+  }
+}
+
+/* Hero Szekció */
+.hero {
+  background: linear-gradient(rgba(45, 55, 50, 0.65), rgba(45, 55, 50, 0.65)), 
+              url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1500&q=80') center/cover;
+  min-height: 70vh;
+}
+
+/* Animációk */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards ease-out;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pulse-btn {
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(91, 112, 101, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(91, 112, 101, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(91, 112, 101, 0); }
+}
+
+/* Görgetésre Induló Animációk */
+.reveal, .reveal-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.active, .reveal-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Kártyák Kiemelése */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Árlista Táblázat */
+.table th, .table td {
+  padding: 1rem;
+}
+
+/* Térkép Beállítások */
+.map-container iframe {
+  border-radius: 8px;
+  display: block;
+}
+
+/* Galéria Effectek */
+.gallery-item {
+  height: 240px;
+}
+
+.gallery-item img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: #fff;
+  padding: 1rem 0.5rem 0.5rem;
+  font-size: 0.95rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-caption {
+  transform: translateY(0);
+}
+#arlista .d-flex {
+  flex-wrap: nowrap; /* Prevents item name and price from splitting lines awkwardly */
+  align-items: baseline;
+}
+
+#arlista .price-tag,
+#arlista td:last-child,
+#arlista .fw-bold {
+  white-space: nowrap; /* Forces the price number and currency symbol to stay together */
+  flex-shrink: 0;      /* Keeps the price column from shrinking when text is long */
+  padding-left: 0.75rem;
+}
+
+#arlista .item-name {
+  word-break: break-word; /* Allows long treatment titles to wrap while preserving price space */
+  min-width: 0;           /* Allows flexbox child to shrink properly */
+}
+CSS
+/* Prevent price wrapping in the table */
+#pricing table td:last-child,
+#pricing table th:last-child {
+  white-space: nowrap;
+}
+
+/* Give more space to the treatment name and price on smaller screens */
+@media (max-width: 576px) {
+  #pricing .table th, 
+  #pricing .table td {
+    padding: 0.75rem 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  /* Prevent floating language button from overlapping the last rows */
+  #pricing .card {
+    padding-bottom: 3.5rem !important;
+  }
+}
