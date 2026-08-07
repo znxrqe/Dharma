@@ -251,3 +251,13 @@ CSS
   height: 100% !important;
   border: 0;
 }
+/* Prevent table text overflow on small mobile screens */
+.table td, .table th {
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+
+/* Keep prices and time durations unified on one line */
+.text-nowrap {
+  white-space: nowrap !important;
+}
